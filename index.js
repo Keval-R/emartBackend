@@ -19,7 +19,7 @@ const stripe = require('stripe')('sk_test_51LFB7YSHaPW2YZDs1HRMdtLok4zJ6TuSgtlG4
 app.post('/create-checkout-session', async (req, res) => {
   let product_data = req.body;
   let allProduct = [];
-  for (i = 0; i < product_data.data.length; i++) {
+  for (i = 0; i < product_data.length; i++) {
     let json = {
       price_data: {
         currency: 'inr',
@@ -48,9 +48,8 @@ app.post('/create-checkout-session', async (req, res) => {
 
 
 app.post('/login',async (req, res) => {
-  console.log("req.body",req.body)
-  console.log("req.body.data",req.body.data)
-  let data = req.body.data;
+
+  let data = req.body;
   if(data.email == "test@test.com" && data.password == "test"){
     res.json({status: 200, msg: "Sucessfully logged in."});
   }else{
