@@ -49,7 +49,7 @@ app.post('/create-checkout-session', async (req, res) => {
 
 app.post('/login',async (req, res) => {
 
-  let data = req.body;
+  let data = req.body.data;
   console.log(req.body);
   console.log(req.body.data);
   if(data.email == "test@test.com" && data.password == "test"){
