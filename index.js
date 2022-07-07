@@ -1,7 +1,7 @@
 const express = require('express')
 var cors = require('cors')
 const app = express()
-const port = 3000
+const port = 8082
 const bodyParser = require('body-parser');
 const { async } = require('rxjs');
 
@@ -10,7 +10,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
-const YOUR_DOMAIN = 'http://localhost:3000';
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
@@ -40,8 +39,8 @@ app.post('/create-checkout-session', async (req, res) => {
     payment_method_types: ['card'],
     line_items: allProduct,
     mode: 'payment',
-    success_url: 'http://192.168.1.101:4200/order-status?status=true',
-    cancel_url: 'http://192.168.1.101:4200/order-status?status=false',
+    success_url: 'https://emartshop.web.app/order-status?status=true',
+    cancel_url: 'https://emartshop.web.app/order-status?status=false',
   });
   // res.redirect(303, session.url);
   res.json({ id: session.id });
