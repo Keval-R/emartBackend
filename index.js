@@ -19,7 +19,7 @@ const stripe = require('stripe')('sk_test_51LFB7YSHaPW2YZDs1HRMdtLok4zJ6TuSgtlG4
 app.post('/create-checkout-session', async (req, res) => {
   let product_data = req.body;
   let allProduct = [];
-  for (i = 0; i < product_data.length; i++) {
+  for (i = 0; i < product_data.data.length; i++) {
     let json = {
       price_data: {
         currency: 'inr',
